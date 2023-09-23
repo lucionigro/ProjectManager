@@ -61,12 +61,17 @@ namespace ProjectManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IssueId,Summary,Description,ProjectId,ReporterId,Created,Updated,Due")] Issue issue)
         {
+            issue.Created = DateTime.Today;
+            issue.Updated = DateTime.Today;
+
             if (ModelState.IsValid)
             {
                 _context.Add(issue);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+
             }
+
             ViewData["ProjectId"] = new SelectList(_context.Projects, "ProjectId", "ProjectId", issue.ProjectId);
             ViewData["ReporterId"] = new SelectList(_context.Users, "UserId", "UserId", issue.ReporterId);
             return View(issue);

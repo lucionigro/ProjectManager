@@ -25,22 +25,12 @@ namespace ProjectManager.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Issue>()
-                .Property(d => d.Created)
-                .ValueGeneratedOnAdd();
             modelBuilder.Entity<User>()
                 .Property(u => u.UserCreated)
                 .ValueGeneratedOnAdd();
             modelBuilder.Entity<Project>()
                 .Property(p => p.Created)
                 .ValueGeneratedOnAdd();
-
-            modelBuilder.Entity<Issue>()
-                .Property(i => i.Updated)
-                .ValueGeneratedOnAddOrUpdate();
-            modelBuilder.Entity<Project>()
-                .Property(p => p.Updated)
-                .ValueGeneratedOnAddOrUpdate();
 
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Username)

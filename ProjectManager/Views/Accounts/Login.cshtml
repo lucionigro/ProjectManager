@@ -1,0 +1,45 @@
+﻿@using ProjectManager.DTO;
+@model LoginDTO
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/css/login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="login-left">
+            <div class="center">
+                <h1>¡Welcome!</h1>
+                <p>Please enter your credentials.</p></>
+                <form method="post" asp-controller="Accounts" asp-action="Login" id="form">
+                    <div class="mb-3" id="mail">
+                        <label for="exampleInputEmail1" class="form-label">Email:</label>
+                        <input asp-for="Email" type="email" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password:</label>
+                        <input asp-for="Password" type="password" class="form-control">
+                    </div>
+                    <button type="submit" value="Log in" class="btn btn-primary" asp-action="Login" asp-controller="Accounts">Login</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
